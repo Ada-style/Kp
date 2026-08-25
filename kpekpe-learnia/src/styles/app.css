@@ -1,0 +1,703 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800;900&display=swap');
+
+:root {
+  /* Kpékpé Official Brand Colors */
+  --kpe-green: #00963F;
+  --kpe-green-hover: #008236;
+  --kpe-green-pale: #EAF7EE;
+  --kpe-green-light: #C3E6CB;
+  
+  --kpe-yellow: #FEEC01;
+  --kpe-yellow-warm: #FFE619;
+  --kpe-yellow-pale: #FFFDE6;
+
+  --kpe-dark: #141414;
+  --kpe-gray-dark: #374151;
+  --kpe-gray: #6B7280;
+  --kpe-gray-light: #9CA3AF;
+  --kpe-gray-border: #EBEBEB;
+  --kpe-gray-bg: #F8FAF8;
+  --kpe-surface: #FFFFFF;
+
+  /* Typography */
+  --font-display: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Geometry & Spacings */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-full: 9999px;
+
+  --sidebar-w: 260px;
+  --header-h: 68px;
+
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 8px 20px rgba(0, 150, 63, 0.08);
+}
+
+/* Reset & Global Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-body);
+  color: var(--kpe-dark);
+  background-color: var(--kpe-gray-bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--kpe-dark);
+  line-height: 1.25;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Layout Shell */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--kpe-gray-bg);
+}
+
+.app-sidebar {
+  width: var(--sidebar-w);
+  background: var(--kpe-surface);
+  border-right: 1px solid var(--kpe-gray-border);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 40;
+}
+
+.sidebar-header {
+  height: var(--header-h);
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--kpe-gray-border);
+}
+
+.sidebar-nav-list {
+  flex: 1;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sidebar-group-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--kpe-gray-light);
+  padding: 12px 14px 4px 14px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  color: var(--kpe-dark);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.nav-link:hover {
+  background: #F3F4F6;
+  color: var(--kpe-green);
+}
+
+.nav-link.active-main {
+  background: var(--kpe-green);
+  color: #FFFFFF;
+}
+
+.nav-link.active-main svg {
+  stroke: #FFFFFF;
+}
+
+.sub-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 4px 0 8px 16px;
+  padding-left: 12px;
+  border-left: 2px solid #E5E7EB;
+}
+
+.sub-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--kpe-gray);
+  font-size: 0.86rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sub-nav-link:hover {
+  color: var(--kpe-green);
+  background: var(--kpe-green-pale);
+}
+
+.sub-nav-link.active {
+  color: var(--kpe-green);
+  font-weight: 700;
+  background: var(--kpe-green-pale);
+}
+
+.sidebar-user-footer {
+  padding: 14px;
+  border-top: 1px solid var(--kpe-gray-border);
+}
+
+.user-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  background: #F9FAF9;
+  border: 1px solid var(--kpe-gray-border);
+  cursor: pointer;
+}
+
+.avatar-kpekpe {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--kpe-green);
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+}
+
+/* Header & Top Bar */
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.top-header {
+  height: var(--header-h);
+  background: var(--kpe-surface);
+  border-bottom: 1px solid var(--kpe-gray-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--kpe-gray);
+}
+
+.breadcrumbs .current {
+  color: var(--kpe-dark);
+  font-weight: 700;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.btn-parler-kpekpe {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--kpe-green-pale);
+  color: var(--kpe-green);
+  border: 1px solid rgba(0, 150, 63, 0.2);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-parler-kpekpe:hover {
+  background: #DCF5E5;
+  border-color: var(--kpe-green);
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--kpe-gray-border);
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--kpe-gray-dark);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.icon-btn:hover {
+  border-color: var(--kpe-green);
+  color: var(--kpe-green);
+}
+
+.page-container {
+  flex: 1;
+  padding: 32px 36px 60px 36px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Category Filter Pills (comme sur la maquette officielle) */
+.filter-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  margin-bottom: 24px;
+}
+
+.filter-pill {
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--kpe-gray-border);
+  background: #FFFFFF;
+  color: var(--kpe-gray-dark);
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.filter-pill:hover {
+  border-color: var(--kpe-green);
+  color: var(--kpe-green);
+}
+
+.filter-pill.active {
+  background: var(--kpe-green);
+  color: #FFFFFF;
+  border-color: var(--kpe-green);
+}
+
+/* Kpékpé Cards */
+.kpe-card {
+  background: var(--kpe-surface);
+  border: 1px solid var(--kpe-gray-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.kpe-card:hover {
+  border-color: rgba(0, 150, 63, 0.35);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.kpe-tag {
+  display: inline-block;
+  background: var(--kpe-green-pale);
+  color: var(--kpe-green);
+  font-weight: 700;
+  font-size: 0.76rem;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  text-transform: capitalize;
+}
+
+.btn-primary {
+  background: var(--kpe-green);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: var(--kpe-green-hover);
+  transform: translateX(2px);
+}
+
+.btn-secondary {
+  background: #FFFFFF;
+  color: var(--kpe-dark);
+  border: 1px solid var(--kpe-gray-border);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--kpe-green);
+  color: var(--kpe-green);
+}
+
+/* Priority Continue Banner */
+.continue-banner {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(0, 150, 63, 0.3);
+  border-radius: var(--radius-xl);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 36px;
+  box-shadow: 0 4px 14px rgba(0, 150, 63, 0.05);
+}
+
+/* Chapter Detail Navigation */
+.chapter-tabs-bar {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid #E5E7EB;
+  margin-bottom: 28px;
+  overflow-x: auto;
+}
+
+.chapter-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--kpe-gray);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.chapter-tab:hover {
+  color: var(--kpe-green);
+}
+
+.chapter-tab.active {
+  color: var(--kpe-green);
+}
+
+.chapter-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--kpe-green);
+  border-radius: 3px 3px 0 0;
+}
+
+/* Modals */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-box {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  max-width: 640px;
+  width: 100%;
+  padding: 32px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+@media (max-width: 860px) {
+  .app-sidebar {
+    display: none;
+  }
+  .page-container {
+    padding: 20px 16px 80px 16px;
+  }
+  .top-header {
+    padding: 0 16px;
+  }
+}
+
+
+
+/* ========================================================
+   KPÉKPÉ V1 — DESIGN ORGANIQUE ET HUMAIN
+   ======================================================== */
+:root {
+  --kpe-flame: #FF6B35;
+  --kpe-tree-trunk: #8B6341;
+  --kpe-tree-leaf: #00963F; /* Use the brand green */
+  --kpe-warm-bg: #FDFDFB;
+  
+  --anim-breathe: 4s ease-in-out infinite;
+  --anim-flame-flicker: 1s ease-in-out infinite alternate;
+}
+
+/* ─── Keyframes ─── */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.02); }
+}
+@keyframes flameFlicker {
+  0%   { transform: scaleY(1) rotate(-2deg); filter: brightness(1); }
+  100% { transform: scaleY(1.05) rotate(2deg); filter: brightness(1.1); }
+}
+@keyframes fadeSlideUp {
+  from { transform: translateY(12px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.fade-up { animation: fadeSlideUp 0.4s ease both; }
+
+/* ─── Mon Parcours Layout ─── */
+.mp-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.mp-greeting h1 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--kpe-dark);
+  line-height: 1.1;
+}
+.mp-date-line {
+  font-size: 1rem;
+  color: var(--kpe-gray);
+  font-weight: 500;
+  margin-top: 6px;
+}
+
+/* ─── Daily Goal Card ─── */
+/* No gradients, no colored borders. Just a pure, clean surface with a soft shadow. */
+.daily-goal-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.03);
+  position: relative;
+}
+.dg-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--kpe-dark);
+}
+.dg-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--kpe-green);
+  font-family: var(--font-display);
+  line-height: 1.2;
+}
+.dg-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--kpe-gray);
+  font-weight: 500;
+}
+.dg-track {
+  background: var(--kpe-gray-bg);
+  border-radius: var(--radius-full);
+  height: 8px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.dg-fill {
+  height: 100%;
+  background: var(--kpe-green);
+  border-radius: var(--radius-full);
+  transition: width 0.7s ease;
+}
+.dg-footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/* ─── Wisdom Tree Area ─── */
+/* Replaces the generic box with a soft, borderless section */
+.wisdom-tree-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding: 40px 20px;
+  background: var(--kpe-warm-bg);
+  border-radius: var(--radius-xl);
+}
+.tree-svg-wrap {
+  width: 160px;
+  height: 180px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transform-origin: bottom center;
+}
+.tree-svg-wrap.breathing { animation: breathe var(--anim-breathe); }
+
+.tree-message {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--kpe-dark);
+}
+.tree-sub-message {
+  font-size: 0.95rem;
+  color: var(--kpe-gray);
+  max-width: 400px;
+}
+
+/* ─── Flame Area ─── */
+.flame-area {
+  padding: 24px;
+}
+.flame-header {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--kpe-dark);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.flame-icon-live {
+  display: inline-block;
+  animation: flameFlicker var(--anim-flame-flicker);
+  transform-origin: bottom center;
+}
+
+/* Friend row: simple, clean */
+.friend-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--kpe-gray-border);
+}
+.friend-row:last-child {
+  border-bottom: none;
+}
+.flame-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--kpe-yellow-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+}
+.flame-info {
+  flex: 1;
+}
+.flame-name {
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--kpe-dark);
+}
+.flame-status {
+  font-size: 0.9rem;
+  color: var(--kpe-gray);
+  margin-top: 4px;
+}
+.flame-streak-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--kpe-flame);
+  font-family: var(--font-display);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tree-svg-wrap.breathing,
+  .flame-icon-live { animation: none !important; }
+}
